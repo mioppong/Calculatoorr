@@ -129,19 +129,20 @@ footer{
 
 @media screen and (min-width:6px) {
   [class*="calculator"] {
-    width:50%;
+    width:25%;
   }
   
 }
 
 .btn_bottom {
   background-color: #8c8c8c;
-  border-radius: 25px;
+  border-radius: 6vh;
   color: white;
-  width: 50px;
+  width: 6vh;
 }
 
 .btn_top {
   background-color: #202020;
   color: white;
+  width: 6vh;
 }
