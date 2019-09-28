@@ -7,7 +7,7 @@ body {
 	font-family: NimbusSanL, Arial, sans-serif;
 	text-align: center;
 	color:#202020;
-	background-color:Silver; 
+	background-color:#737373; 
 }
 
 div {
@@ -25,18 +25,26 @@ div.calcDisplay {
 }
 
 
-.grid_container {
+.grid_top {
   border: #202020;
   display: grid;
+  background-color: #1a1a1d;
   grid-template-columns: auto auto auto auto auto;
   row-gap: 10px;
   column-gap: 10px;
 }
 
-div.calcKeypad {
-	height: 65%;
-    margin: 20px;
+.grid_bottom {
+  border: #202020;
+  display: grid;
+  background-color: #1a1a1d;
+  grid-template-columns: auto auto auto auto auto;
+  row-gap: 10px;
+  column-gap: 10px;
 }
+
+
+
 
 .input {
 	border:none;
@@ -65,20 +73,9 @@ div.calcKeypad {
   
 }
 
-.opKey, .eqKey {
-  background-color: Grey;
-  color: LightGrey;
-}
 
-.acKey {
-  background-color: #BB0000;
-  color: LightGrey;
-}
 
-.eqKey {
-  grid-column: 5;
-  
-}
+
 
 p {
 	text-align:right;
@@ -130,6 +127,8 @@ footer{
 @media screen and (min-width:6px) {
   [class*="calculator"] {
     width:25%;
+    border: #101010;
+    background-color: #1a1a1d;
   }
   
 }
