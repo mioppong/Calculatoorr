@@ -118,6 +118,7 @@ footer{
 
  /**/ 
  [class*="calculator"] { 
+    color: aliceblue;
      width: 100%;
      display:inline-block;
      height:100%;
@@ -133,6 +134,7 @@ footer{
   
 }
 
+
 .btn_bottom {
   background-color: #8c8c8c;
   border-radius: 6vh;
@@ -144,4 +146,5 @@ footer{
   background-color: #202020;
   color: white;
   width: 6vh;
+  border-radius: 6vh;
 }
