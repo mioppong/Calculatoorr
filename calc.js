@@ -1,8 +1,7 @@
 window.onload = webpage_loaded;
 	
-var operator_array = ["plus","minus","multiply","divide","sin","equals"];
-var left; //left side of computation
-var right; //right side of computation
+var left=0; //left side of computation
+var right=0; //right side of computation
 var operator_pressed=0;
 var which_operator_pressed; //saves which operator is pressed
 var answer=0;
@@ -29,9 +28,13 @@ function webpage_loaded(){
 	
 
 	document.getElementById("equals").addEventListener("click", calculate);
-	document.getElementById("answer").addEventListener("click", calculate);
+	document.getElementById("answer").addEventListener("click", get_answer);
+	document.getElementById("clear").addEventListener("click", clear);
 
 	document.getElementById("sin").addEventListener("click", calculate);
+
+	
+
 	
 }
 
@@ -75,14 +78,10 @@ function compute(){
 		}
 		
 	}
-
-	alert("left side is"+ left);
-	alert("right side is"+ right);
 }
 	
 	
 function calculate(){
-	
 	
 	if (which_operator_pressed == "plus") {
 		
@@ -106,7 +105,21 @@ function calculate(){
 	calc_display.innerHTML = answer;
 }
 
+function get_answer(){
+	alert("get answer works");
+	calc_display.innerHTML = answer;
+}
 
-	
+function clear(){
+	alert("clear works");
+	 left=0; 
+	 right=0; 
+	 operator_pressed=0;
+	 which_operator_pressed=""; 
+	 answer=0;
+
+	 calc_display.innerHTML="0"
+
+}
 
 
