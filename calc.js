@@ -7,7 +7,6 @@ var which_operator_pressed; //saves which operator is pressed
 var answer=0;
 var special_operator_pressed=0;
 
-
 function webpage_loaded(){
 	//this is a list of listeners for each button that can be pressed,  all numbers
 	//mult,dvide, add, subtract, sin, equals
@@ -34,7 +33,6 @@ function webpage_loaded(){
 
 	document.getElementById("sin").addEventListener("click", operator);
 	document.getElementById("root").addEventListener("click", operator);
-
 }
 
 function operator(){
@@ -47,6 +45,7 @@ function operator(){
 	if (special_operator_array.includes(this.id)) {
 		special_operator_pressed = 1;
 	}
+	
 	which_operator_pressed = this.id;
 
 	if (special_operator_pressed==0) {
@@ -89,24 +88,22 @@ function compute(){
 		}
 	}else{
 		//sin, cos, root has been pressed
-		if(parseInt(calc_display.innerHTML) == 0){
+		if(parseInt(calc_display.innerHTML) >= 0){
 			calc_display.innerHTML = which_operator_pressed +"(";	
 			
 		}else{
 			if (left==0) {
 				left = this.id;
 				calc_display.innerHTML+=left;
+			
 			}else{
 				calc_display.innerHTML += this.id;
 				left += this.id;
 				
 			}			
-		}
-		
+		}		
 	}	
 }
-
-	
 	
 function calculate(){
 
@@ -140,13 +137,16 @@ function calculate(){
 		}
 				
 	}
-
+	operator_pressed=0;
+	special_operator_pressed = 0;
 	calc_display.innerHTML = answer;
+	left = answer;
 }
 
 function get_answer(){
 	alert("get answer works");
-	calc_display.innerHTML = answer;
+	calc_display.innerHTML += answer;
+	left = answer;
 }
 
 function clear(){
