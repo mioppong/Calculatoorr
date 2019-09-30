@@ -1,10 +1,11 @@
 window.onload = webpage_loaded;
-	
+var special_operator_array = ["sin","root"];
 var left=0; //left side of computation
 var right=0; //right side of computation
 var operator_pressed=0;
 var which_operator_pressed; //saves which operator is pressed
 var answer=0;
+var special_operator_pressed=0;
 
 
 function webpage_loaded(){
@@ -31,11 +32,9 @@ function webpage_loaded(){
 	document.getElementById("answer").addEventListener("click", get_answer);
 	document.getElementById("clear").addEventListener("click", clear);
 
-	document.getElementById("sin").addEventListener("click", calculate);
+	document.getElementById("sin").addEventListener("click", operator);
+	document.getElementById("root").addEventListener("click", operator);
 
-	
-
-	
 }
 
 function operator(){
@@ -44,10 +43,19 @@ function operator(){
 	//after an operator has been pressed, 
 	//the elements pressed after the operator
 	//will be computed with the elements pressed before
-	operator_pressed = 1;
-	calc_display.innerHTML = "0"
-	which_operator_pressed = this.id;
 	
+	if (special_operator_array.includes(this.id)) {
+		special_operator_pressed = 1;
+	}
+	which_operator_pressed = this.id;
+
+	if (special_operator_pressed==0) {
+		operator_pressed = 1;
+		calc_display.innerHTML = "0";
+		
+	}else{
+		compute();
+	}
 }
 
 //stores the elements before an operator
@@ -57,51 +65,80 @@ function compute(){
 	//with elements pressed
 	calc_display = document.getElementById("calc_display");
 
-	//the operator has not been pressed, 
-	//so elements are saved to left side
-	if (operator_pressed == 0) {
-		if(parseInt(calc_display.innerHTML) == 0){
-			calc_display.innerHTML = this.id;
-			left = calc_display.innerHTML;
+	//sin, cos, tan, root, has not been pressed
+	if (special_operator_pressed==0){
+		//the operator has not been pressed, +,-,divide, multiply
+		//so elements are saved to left side
+		if (operator_pressed == 0) {
+			if(parseInt(calc_display.innerHTML) == 0){
+				calc_display.innerHTML = this.id;
+				left = calc_display.innerHTML;
+			}else{
+				calc_display.innerHTML += this.id;
+				left = calc_display.innerHTML;
+			}
+		
 		}else{
-			calc_display.innerHTML += this.id;
-			left = calc_display.innerHTML;
+			if (parseInt(calc_display.innerHTML)==0) {
+				calc_display.innerHTML = this.id;
+				right = calc_display.innerHTML;
+			}else{
+				calc_display.innerHTML += this.id;
+				right = calc_display.innerHTML;
+			}
 		}
-	
 	}else{
-		if (parseInt(calc_display.innerHTML)==0) {
-			calc_display.innerHTML = this.id;
-			right = calc_display.innerHTML;
+		//sin, cos, root has been pressed
+		if(parseInt(calc_display.innerHTML) == 0){
+			alert("it justc ant compute");
+			calc_display.innerHTML = which_operator_pressed;	
+			
 		}else{
-			calc_display.innerHTML += this.id;
-			right = calc_display.innerHTML;
+			alert("root and number");
+			if (left==0) {
+				left = this.id
+			}else{
+				left += this.id;
+				calc_display.innerHTML = left;
+			}			
 		}
 		
-	}
+	}	
 }
+
 	
 	
 function calculate(){
-	
-	if (which_operator_pressed == "plus") {
+
+	if (special_operator_pressed==0){
+		switch (which_operator_pressed) {
+			case "plus":
+				answer = parseInt(left) + parseInt(right);
+				break;
+			case "minus":
+				answer = parseInt(left) - parseInt(right);
+				break;
+			case "multiply":
+				answer = parseInt(left) * parseInt(right);
+				break;
+			case "divide":
+				answer = parseInt(left) / parseInt(right);
+				break;
 		
+			}
+	}else{
+
+		alert("special calculate");
+		/*switch (which_operator_pressed) {
+			case "sin":
+				answer = Math.sin(parseInt(left)) ;
+				break;
+			case "root":
+				answer = Math.sqrt(parseInt(left) - parseInt(right);
+				break;
+				*/
 	}
 
-	switch (which_operator_pressed) {
-		case "plus":
-			answer = parseInt(left) + parseInt(right);
-			break;
-		case "minus":
-			answer = parseInt(left) - parseInt(right);
-			break;
-		case "multiply":
-			answer = parseInt(left) * parseInt(right);
-			break;
-		case "divide":
-			answer = parseInt(left) / parseInt(right);
-			break;
-	
-		}
 	calc_display.innerHTML = answer;
 }
 
@@ -117,9 +154,14 @@ function clear(){
 	 operator_pressed=0;
 	 which_operator_pressed=""; 
 	 answer=0;
-
+	 special_operator_pressed=0
 	 calc_display.innerHTML="0"
 
 }
 
+//computes sin, cos, root...
+function special_compute(){
+	
+	calc_display = document.getElementById("calc_display");
 
+}
