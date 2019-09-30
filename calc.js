@@ -90,16 +90,16 @@ function compute(){
 	}else{
 		//sin, cos, root has been pressed
 		if(parseInt(calc_display.innerHTML) == 0){
-			alert("it justc ant compute");
-			calc_display.innerHTML = which_operator_pressed;	
+			calc_display.innerHTML = which_operator_pressed +"(";	
 			
 		}else{
-			alert("root and number");
 			if (left==0) {
-				left = this.id
+				left = this.id;
+				calc_display.innerHTML+=left;
 			}else{
+				calc_display.innerHTML += this.id;
 				left += this.id;
-				calc_display.innerHTML = left;
+				
 			}			
 		}
 		
@@ -126,17 +126,19 @@ function calculate(){
 				break;
 		
 			}
-	}else{
+	
+		}else{
 
 		alert("special calculate");
-		/*switch (which_operator_pressed) {
+		switch (which_operator_pressed) {
 			case "sin":
 				answer = Math.sin(parseInt(left)) ;
 				break;
 			case "root":
-				answer = Math.sqrt(parseInt(left) - parseInt(right);
+				answer = Math.sqrt(parseInt(left));
 				break;
-				*/
+		}
+				
 	}
 
 	calc_display.innerHTML = answer;
