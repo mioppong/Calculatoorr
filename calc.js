@@ -129,28 +129,34 @@ function calculate(){
 		alert("special calculate");
 		switch (which_operator_pressed) {
 			case "sin":
-				answer = Number(Math.sin(parseInt(left))).toFixed(10) ;
+				answer = Number(Math.sin(parseInt(left))).toFixed(9) ;
 				break;
 			case "root":
-				answer = Number(Math.sqrt(parseInt(left)).toFixed(10));
+				answer = Number(Math.sqrt(parseInt(left)).toFixed(9));
 				break;
 		}
 				
 	}
 	operator_pressed=0;
 	special_operator_pressed = 0;
-	calc_display.innerHTML = answer;
+	calc_display.innerHTML = Number(answer);
 	left = answer;
+	right = answer;
+
 }
 
 function get_answer(){
-	alert("get answer works");
-	calc_display.innerHTML += answer;
-	left = answer;
+	if(parseInt(calc_display.innerHTML) >= 0){
+		calc_display.innerHTML = answer;
+		
+	}else{
+		calc_display.innerHTML += answer;
+		left = answer;
+	}
+	
 }
 
 function clear(){
-	alert("clear works");
 	 left=0; 
 	 right=0; 
 	 operator_pressed=0;
