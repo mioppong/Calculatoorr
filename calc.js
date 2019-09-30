@@ -132,10 +132,10 @@ function calculate(){
 		alert("special calculate");
 		switch (which_operator_pressed) {
 			case "sin":
-				answer = Math.sin(parseInt(left)) ;
+				answer = Number(Math.sin(parseInt(left))).toFixed(10) ;
 				break;
 			case "root":
-				answer = Math.sqrt(parseInt(left));
+				answer = Number(Math.sqrt(parseInt(left)).toFixed(10));
 				break;
 		}
 				

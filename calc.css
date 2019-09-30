@@ -17,6 +17,7 @@ div {
 }
 
 div.calcDisplay {
+  word-break: break-all;
   background-color: DarkGrey;
   color: CharcoalGrey;
   font-size: 1.75em;
